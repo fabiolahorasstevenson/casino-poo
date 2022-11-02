@@ -15,15 +15,15 @@ function getRandomInt(min: number, max: number) {
 //-------------Comienzo de la clase Tragamonedas----------
 
 export class Tragamonedas {
-  protected saldoJugador: number;
+  //protected saldoJugador: number; se borra porque esto se movio al Juagador
   protected cantidadSlots: number;
   protected apuestaMinima: number;
   //protected Casino: Casino;
 
-  constructor(paramCantSlots: number, paramApuestaMinima: number, paramSaldoJugador: number) {
+  constructor(paramCantSlots: number, paramApuestaMinima: number) {
     this.cantidadSlots = paramCantSlots;
     this.apuestaMinima = paramApuestaMinima;
-    this.saldoJugador = paramSaldoJugador;
+    //this.saldoJugador = paramSaldoJugador; se borra porque esto se movio al Juagador
 
   }
 

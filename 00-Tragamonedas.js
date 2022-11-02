@@ -12,10 +12,10 @@ function getRandomInt(min, max) {
 //-------------Comienzo de la clase Tragamonedas----------
 var Tragamonedas = /** @class */ (function () {
     //protected Casino: Casino;
-    function Tragamonedas(paramCantSlots, paramApuestaMinima, paramSaldoJugador) {
+    function Tragamonedas(paramCantSlots, paramApuestaMinima) {
         this.cantidadSlots = paramCantSlots;
         this.apuestaMinima = paramApuestaMinima;
-        this.saldoJugador = paramSaldoJugador;
+        //this.saldoJugador = paramSaldoJugador; se borra porque esto se movio al Juagador
     }
     Tragamonedas.prototype.setCantidadSlots = function (paramCantSlots) {
         this.cantidadSlots = paramCantSlots;

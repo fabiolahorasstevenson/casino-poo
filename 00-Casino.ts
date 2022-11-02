@@ -16,12 +16,13 @@ export class Casino {
 
   public jugarTragamonedas1(pJugador: Jugador) {
     this.tragamonedas1.jugarTragamonedas(pJugador);
+    this.interaccionCasino();//le agregue esta linea para no salir del casino
   }
 
   public interaccionCasino() {
 
     let salidaCasino: boolean = false;
-    let jugador1: Jugador= new Jugador('Pepe',100);
+    
 
 
     while (salidaCasino === false) {
@@ -32,14 +33,14 @@ export class Casino {
 
       switch (juegos[index]) {
         case 'Tragamonedas1':
-          if (jugador1.getSaldoJugador() < 100 || jugador1.getSaldoJugador() === undefined || jugador1.getSaldoJugador() === null) {
+          if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
             console.log("No posee saldo suficiente para jugar, cargue saldo y vuelva a intentar!")
             console.log("------------------------------------------------------------------------------------")
             this.interaccionCasino();
           } else {
             console.log("<Bienvenido al juego de Tragamonedas1")
             console.log("------------------------------------------------------------------------------------")
-            this.jugarTragamonedas1(jugador1);
+            this.jugarTragamonedas1(this.jugador);
           }
           break;
 
@@ -54,14 +55,14 @@ export class Casino {
           break;
 
         case 'Consultar saldo de jugador':
-          console.log(jugador1.getSaldoJugador());
+          console.log(this.jugador.getSaldoJugador());
           break;
 
         case 'Cargar saldo de jugador':
           let cargarSaldo: number = readlineSync.questionInt("ingrese la cantidad para agregar al saldo: ");
-          jugador1.comprarSaldo(cargarSaldo);
+          this.jugador.comprarSaldo(cargarSaldo);
           console.log("<Se han agregado " + cargarSaldo + " al saldo del jugador!");
-          console.log("<El saldo actual es de " + jugador1.getSaldoJugador());
+          console.log("<El saldo actual es de " + this.jugador.getSaldoJugador());
           break;
 
         default:
@@ -80,10 +81,9 @@ export class Casino {
 // Dejamos acá por ahora
 // Definir clase jugador 
 
-let maquina1 = new Tragamonedas(3, 100, 1000);
-let jugador1: Jugador= new Jugador('Pepe',100);
+let maquina1 = new Tragamonedas(3, 100);
+let jugador1: Jugador= new Jugador('Pepe',0);
 
 let CasinoUshuaia = new Casino(maquina1,jugador1);
-//maquina1.setCasinoPadre(CasinoUshuaia);
 
 CasinoUshuaia.interaccionCasino();
