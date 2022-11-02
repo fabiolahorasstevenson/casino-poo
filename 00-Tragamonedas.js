@@ -29,9 +29,6 @@ var Tragamonedas = /** @class */ (function () {
     Tragamonedas.prototype.getApuestaMinima = function () {
         return this.apuestaMinima;
     };
-    /*public setCasinoPadre(paramCasino: Casino) {
-      this.Casino = paramCasino;
-    }*/
     Tragamonedas.prototype.jugarTragamonedas = function (pJugador) {
         var continuar = true;
         while (pJugador.getSaldoJugador() >= this.getApuestaMinima() && continuar === true) {
