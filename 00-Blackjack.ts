@@ -12,10 +12,7 @@ let readlineSync = require('readline-sync');
 //-------------Comienzo de la clase Tragamonedas----------
 export class Blackjack {
 
-
-
 }
-
 
 
 
@@ -120,7 +117,6 @@ function Bj21() {
 
     }
   }
-
 }
 
 Bj21();

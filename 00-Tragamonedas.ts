@@ -68,29 +68,25 @@ export class Tragamonedas {
 
         for (let i: number = 0; i < slotsMaquina.length; i++) {
           slotsMaquina[i] = getRandomInt(1, 10);
-          console.log("numero del slot " + i + " es igual a " + slotsMaquina[i]);
+          console.log("[ " + i + " ] es igual a " + slotsMaquina[i]);
 
         }
         console.log("Usted ha perdido")
         pJugador.modificarSaldoJugador(-100)
-        console.log("Al finalizar esta ronda su saldo de jugador a quedado asi: " + pJugador.getSaldoJugador())
+        console.log("Al finalizar esta ronda su saldo de jugador ha quedado asi: " + pJugador.getSaldoJugador())
         console.log("------------------------------------------------------------------------------------")
 
       }
 
-
-      if (readlineSync.keyInYN('Desea continuar viciando y perdiendo su vida?')) {
+      if (readlineSync.keyInYN('Desea continuar viciando y perdiendo su ¿ vida ?')) {
         // 'Y' key was pressed.
         continuar = true;
         // Do something...
       } else {
         // Another key was pressed.
         console.log(`Saliendo del tragamonedas de ${this.cantidadSlots} Slots`);
-        // Do something...
         continuar = false;
       }
     }
-    // Ver por qué no funciona 
-   // this.Casino.interaccionCasino();
   }
 }

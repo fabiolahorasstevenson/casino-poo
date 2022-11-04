@@ -38,14 +38,14 @@ export class Casino {
             console.log("------------------------------------------------------------------------------------")
             this.interaccionCasino();
           } else {
-            console.log("<Bienvenido al juego de Tragamonedas1")
+            console.log("<Bienvenido al juego de Tragamonedas1>")
             console.log("------------------------------------------------------------------------------------")
             this.jugarTragamonedas1(this.jugador);
           }
           break;
 
         case 'Tragamonedas2':
-          console.log("<Bienvenido al juego de Tragamonedas2 -variante del 1ero [void] ")
+          console.log("<Bienvenido al juego de Tragamonedas2 -variante del 1ero [void]>")
           console.log("------------------------------------------------------------------------------------")
           break;
 
