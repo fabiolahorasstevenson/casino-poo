@@ -31,7 +31,7 @@ var Tragamonedas = /** @class */ (function () {
     };
     Tragamonedas.prototype.jugarTragamonedas = function (pJugador) {
         var continuar = true;
-        while (pJugador.getSaldoJugador() >= this.getApuestaMinima() && continuar === true) {
+        while (pJugador.getSaldoJugador() >= this.apuestaMinima && continuar === true) {
             console.log("En esta ronda su saldo de jugador es: " + pJugador.getSaldoJugador());
             var slotsMaquina = new Array(this.cantidadSlots);
             if (getRandomInt(0, 2) === 1) { //Al cumplirse la condicion de que sea 1, quiere decir que los numeros de los slots debes ser iguales.
@@ -48,14 +48,14 @@ var Tragamonedas = /** @class */ (function () {
             else { //En caso de que no sea 10 el valor aleatorio, los numeros tenderan a ser distintos segun la funcion Random.
                 for (var i = 0; i < slotsMaquina.length; i++) {
                     slotsMaquina[i] = getRandomInt(1, 10);
-                    console.log("numero del slot " + i + " es igual a " + slotsMaquina[i]);
+                    console.log("[ " + i + " ] es igual a " + slotsMaquina[i]);
                 }
                 console.log("Usted ha perdido");
                 pJugador.modificarSaldoJugador(-100);
-                console.log("Al finalizar esta ronda su saldo de jugador a quedado asi: " + pJugador.getSaldoJugador());
+                console.log("Al finalizar esta ronda su saldo de jugador ha quedado asi: " + pJugador.getSaldoJugador());
                 console.log("------------------------------------------------------------------------------------");
             }
-            if (readlineSync.keyInYN('Desea continuar viciando y perdiendo su vida?')) {
+            if (readlineSync.keyInYN('Desea continuar viciando y perdiendo su ¿ vida ?')) {
                 // 'Y' key was pressed.
                 continuar = true;
                 // Do something...
@@ -63,12 +63,9 @@ var Tragamonedas = /** @class */ (function () {
             else {
                 // Another key was pressed.
                 console.log("Saliendo del tragamonedas de ".concat(this.cantidadSlots, " Slots"));
-                // Do something...
                 continuar = false;
             }
         }
-        // Ver por qué no funciona 
-        // this.Casino.interaccionCasino();
     };
     return Tragamonedas;
 }());

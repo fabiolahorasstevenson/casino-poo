@@ -46,7 +46,7 @@ export class Tragamonedas {
   public jugarTragamonedas(pJugador: Jugador) {
     
     let continuar: boolean = true;
-    while (pJugador.getSaldoJugador() >= this.getApuestaMinima() && continuar === true) {
+    while (pJugador.getSaldoJugador() >= this.apuestaMinima && continuar === true) {
       console.log("En esta ronda su saldo de jugador es: " + pJugador.getSaldoJugador())
 
 
