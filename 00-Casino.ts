@@ -12,7 +12,7 @@ export class Casino {
   protected jugador: Jugador;
 
 
-  constructor(paramTragamonedas1: Tragamonedas, paramBlackjack:Blackjack ,pJugador: Jugador) {
+  constructor(paramTragamonedas1: Tragamonedas, paramBlackjack: Blackjack, pJugador: Jugador) {
     this.tragamonedas1 = paramTragamonedas1;
     this.blackjack = paramBlackjack;
     this.jugador = pJugador;
@@ -23,16 +23,16 @@ export class Casino {
     this.interaccionCasino();//le agregue esta linea para no salir del casino
   }
 
-
   public jugarBlackjack(pJugador: Jugador) {
     this.blackjack.jugarBlackjack(pJugador);
     //this.interaccionCasino(); le agregue esta linea para no salir del casino
   }
 
-
   public interaccionCasino() {
 
     let salidaCasino: boolean = false;
+
+
 
     while (salidaCasino === false) {
 
@@ -54,7 +54,7 @@ export class Casino {
           break;
 
         case 'Tragamonedas2':
-          console.log("<Bienvenido al juego de Tragamonedas2 -variante del 1ero [void]>")
+          console.log("<Bienvenido al juego de Tragamonedas2 -variante del 1ero [void] ")
           console.log("------------------------------------------------------------------------------------")
           break;
 
@@ -63,14 +63,12 @@ export class Casino {
           console.log("------------------------------------------------------------------------------------")
           break;
 
-          case 'Blackjack':
+        case 'Blackjack':
           if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
             console.log("No posee saldo suficiente para jugar al Blackjack, cargue saldo y vuelva a intentar!")
             console.log("------------------------------------------------------------------------------------")
             this.interaccionCasino();
           } else {
-            console.log("<Bienvenido al juego de Blackjack>")
-            console.log("------------------------------------------------------------------------------------")
             this.jugarBlackjack(this.jugador);
           }
           break;
@@ -90,12 +88,12 @@ export class Casino {
           index = 0;
           console.log("gracias vuelvas prontos ")
           console.log("------------------------------------------------------------------------------------")
-          salidaCasino = true;  
+          salidaCasino = true;
           break;
       }
-      /*if (index === 0) {
-        salidaCasino = true;
-      }*/
+      //if (index === 0) {
+      //  salidaCasino = true;
+      //  }
     }
   }
 }

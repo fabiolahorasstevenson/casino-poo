@@ -39,7 +39,7 @@ var Casino = /** @class */ (function () {
                     }
                     break;
                 case 'Tragamonedas2':
-                    console.log("<Bienvenido al juego de Tragamonedas2 -variante del 1ero [void]>");
+                    console.log("<Bienvenido al juego de Tragamonedas2 -variante del 1ero [void] ");
                     console.log("------------------------------------------------------------------------------------");
                     break;
                 case 'Dados':
@@ -53,8 +53,6 @@ var Casino = /** @class */ (function () {
                         this.interaccionCasino();
                     }
                     else {
-                        console.log("<Bienvenido al juego de Blackjack>");
-                        console.log("------------------------------------------------------------------------------------");
                         this.jugarBlackjack(this.jugador);
                     }
                     break;
@@ -74,9 +72,9 @@ var Casino = /** @class */ (function () {
                     salidaCasino = true;
                     break;
             }
-            /*if (index === 0) {
-              salidaCasino = true;
-            }*/
+            //if (index === 0) {
+            //  salidaCasino = true;
+            //  }
         }
     };
     return Casino;
