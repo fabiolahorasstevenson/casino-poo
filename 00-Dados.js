@@ -41,7 +41,7 @@ var Dados = /** @class */ (function () {
         while (pJugador.getSaldoJugador() >= this.apuestaMinimaDados && continuar === true) {
             if (contadorVueltas === 1) {
                 console.log("------------------------------------------------------------------------------------");
-                console.log("> Bienvenido al Juedo de Dados!! 7 y 11 gana. 2,3 y 12 pierde");
+                console.log("> Bienvenido al Juego de Dados!! 7 y 11 gana. 2,3 y 12 pierde");
                 console.log("-------------------------Vuelta Jugador numero " + contadorVueltas + "---------------------------------------");
             }
             else {
