@@ -56,9 +56,9 @@ export class Dados {
             if (contadorVueltas === 1) {
                 console.log("------------------------------------------------------------------------------------")
                 console.log("> Bienvenido al Juego de Dados!! 7 y 11 gana. 2,3 y 12 pierde");
-                console.log("-------------------------Vuelta Jugador numero " + contadorVueltas + "---------------------------------------")
+                console.log("-------------------------Vuelta Jugador número " + contadorVueltas + "---------------------------------------")
             } else {
-                console.log("-------------------------Vuelta Jugador numero " + contadorVueltas + "--------------------------------------")
+                console.log("-------------------------Vuelta Jugador número " + contadorVueltas + "--------------------------------------")
             }
             console.log("En esta ronda su saldo de jugador es: " + pJugador.getSaldoJugador())
 
