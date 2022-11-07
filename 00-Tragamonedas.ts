@@ -1,8 +1,24 @@
-import { Casino } from "./00-Casino";
+//------codigo para escribir los Console.log a files -- todo hecho por mi desde cero ;P --
+var fs = require('fs');
+var util = require('util');
+var log_file = fs.createWriteStream('./logJuegos.txt', { flags: 'w' });
+var log_stdout = process.stdout;
+
+console.log = function (d) { //
+    log_file.write(util.format(d) + '\n');
+    log_stdout.write(util.format(d) + '\n');
+};
+
+//-----------------------------------
+
 import { Jugador } from './00-Jugador';
 
 //-------Interactuador de lineas de comando por terminal------
 let readlineSync = require('readline-sync');
+
+//-----------------------------------
+
+
 
 //-------Funcion Aleatorio para generar los numeros------
 

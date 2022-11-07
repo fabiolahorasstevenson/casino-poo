@@ -1,3 +1,17 @@
+//------codigo para escribir los Console.log a files -- todo hecho por mi desde cero ;P --
+var fs = require('fs');
+var util = require('util');
+var log_file = fs.createWriteStream('./logJuegos.txt', { flags: 'w' });
+var log_stdout = process.stdout;
+
+console.log = function (d) { //
+    log_file.write(util.format(d) + '\n');
+    log_stdout.write(util.format(d) + '\n');
+};
+
+//-----------------------------------
+
+
 import { Tragamonedas } from './00-Tragamonedas';
 import { Jugador } from './00-Jugador';
 

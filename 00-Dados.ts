@@ -1,3 +1,16 @@
+//------codigo para escribir los Console.log a files -- todo hecho por mi desde cero ;P --
+var fs = require('fs');
+var util = require('util');
+var log_file = fs.createWriteStream('./logJuegos.txt', { flags: 'w' });
+var log_stdout = process.stdout;
+
+console.log = function (d) { //
+    log_file.write(util.format(d) + '\n');
+    log_stdout.write(util.format(d) + '\n');
+};
+
+//-----------------------------------
+
 import { Jugador } from './00-Jugador';
 
 //-------Interactuador de lineas de comando por terminal------
@@ -44,9 +57,9 @@ export class Dados {
                 console.log("------------------------------------------------------------------------------------")
                 console.log("> Bienvenido al Juedo de Dados!! 7 y 11 gana. 2,3 y 12 pierde");
                 console.log("-------------------------Vuelta Jugador numero " + contadorVueltas + "---------------------------------------")
-              } else {
+            } else {
                 console.log("-------------------------Vuelta Jugador numero " + contadorVueltas + "--------------------------------------")
-              }
+            }
             console.log("En esta ronda su saldo de jugador es: " + pJugador.getSaldoJugador())
 
             dado1 = this.lanzarDados();
