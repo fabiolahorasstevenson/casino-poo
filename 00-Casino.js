@@ -8,14 +8,19 @@ var _00_Dados_1 = require("./00-Dados");
 //-------Interactuador de lineas de comando por terminal------
 var readlineSync = require('readline-sync');
 var Casino = /** @class */ (function () {
-    function Casino(paramTragamonedas1, paramBlackjack, paramDados, pJugador) {
+    function Casino(paramTragamonedas1, paramTragamonedas2, paramBlackjack, paramDados, pJugador) {
         this.tragamonedas1 = paramTragamonedas1;
+        this.tragamonedas2 = paramTragamonedas2;
         this.blackjack = paramBlackjack;
         this.dados = paramDados;
         this.jugador = pJugador;
     }
     Casino.prototype.jugarTragamonedas1 = function (pJugador) {
         this.tragamonedas1.jugarTragamonedas(pJugador);
+        this.interaccionCasino(); //le agregue esta linea para no salir del casino
+    };
+    Casino.prototype.jugarTragamonedas2 = function (pJugador) {
+        this.tragamonedas2.jugarTragamonedas(pJugador);
         this.interaccionCasino(); //le agregue esta linea para no salir del casino
     };
     Casino.prototype.jugarBlackjack = function (pJugador) {
@@ -29,7 +34,7 @@ var Casino = /** @class */ (function () {
     Casino.prototype.interaccionCasino = function () {
         var salidaCasino = false;
         while (salidaCasino === false) {
-            var juegos = ['Tragamonedas de 3 Slots', 'Tragamonedas2', 'Dados', 'Blackjack', 'Consultar saldo de jugador', 'Cargar saldo de jugador'], index = readlineSync.keyInSelect(juegos, 'Elija la opcion, juego, o cero para salir');
+            var juegos = ['Tragamonedas de 3 Slots', 'Tragamonedas de 5 Slots', 'Dados', 'Blackjack', 'Consultar saldo de jugador', 'Cargar saldo de jugador'], index = readlineSync.keyInSelect(juegos, 'Elija la opcion, juego, o cero para salir');
             console.log("------------------------------------------------------------------------------------");
             switch (juegos[index]) {
                 case 'Tragamonedas de 3 Slots':
@@ -44,9 +49,17 @@ var Casino = /** @class */ (function () {
                         this.jugarTragamonedas1(this.jugador);
                     }
                     break;
-                case 'Tragamonedas2':
-                    console.log("<Bienvenido al juego de Tragamonedas2 -variante del 1ero [void] ");
-                    console.log("------------------------------------------------------------------------------------");
+                case 'Tragamonedas de 5 Slots':
+                    if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
+                        console.log("No posee saldo suficiente para jugar al Tragamonedas de 5 Slots, cargue saldo y vuelva a intentar!");
+                        console.log("------------------------------------------------------------------------------------");
+                        this.interaccionCasino();
+                    }
+                    else {
+                        console.log("<Bienvenido al juego de Tragamonedas de 5 Slots>");
+                        console.log("------------------------------------------------------------------------------------");
+                        this.jugarTragamonedas2(this.jugador);
+                    }
                     break;
                 case 'Dados':
                     if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
@@ -95,8 +108,9 @@ exports.Casino = Casino;
 // Dejamos acá por ahora
 // Definir clase jugador 
 var maquina1 = new _00_Tragamonedas_1.Tragamonedas(3, 100);
+var maquina2 = new _00_Tragamonedas_1.Tragamonedas(5, 300);
 var blackjack1 = new _00_Blackjack_1.Blackjack(100);
 var dados1 = new _00_Dados_1.Dados(100);
 var jugador1 = new _00_Jugador_1.Jugador('Pepe', 0);
-var CasinoUshuaia = new Casino(maquina1, blackjack1, dados1, jugador1);
+var CasinoUshuaia = new Casino(maquina1, maquina2, blackjack1, dados1, jugador1);
 CasinoUshuaia.interaccionCasino();

@@ -9,13 +9,15 @@ let readlineSync = require('readline-sync');
 
 export class Casino {
   protected tragamonedas1: Tragamonedas;
+  protected tragamonedas2: Tragamonedas;
   protected blackjack: Blackjack;
   protected dados: Dados;
   protected jugador: Jugador;
 
 
-  constructor(paramTragamonedas1: Tragamonedas, paramBlackjack: Blackjack, paramDados:Dados, pJugador: Jugador) {
+  constructor(paramTragamonedas1: Tragamonedas, paramTragamonedas2: Tragamonedas, paramBlackjack: Blackjack, paramDados: Dados, pJugador: Jugador) {
     this.tragamonedas1 = paramTragamonedas1;
+    this.tragamonedas2 = paramTragamonedas2;
     this.blackjack = paramBlackjack;
     this.dados = paramDados;
     this.jugador = pJugador;
@@ -23,6 +25,11 @@ export class Casino {
 
   public jugarTragamonedas1(pJugador: Jugador) {
     this.tragamonedas1.jugarTragamonedas(pJugador);
+    this.interaccionCasino();//le agregue esta linea para no salir del casino
+  }
+
+  public jugarTragamonedas2(pJugador: Jugador) {
+    this.tragamonedas2.jugarTragamonedas(pJugador);
     this.interaccionCasino();//le agregue esta linea para no salir del casino
   }
 
@@ -44,7 +51,7 @@ export class Casino {
 
     while (salidaCasino === false) {
 
-      let juegos = ['Tragamonedas de 3 Slots', 'Tragamonedas2', 'Dados', 'Blackjack', 'Consultar saldo de jugador', 'Cargar saldo de jugador'], index = readlineSync.keyInSelect(juegos, 'Elija la opcion, juego, o cero para salir');
+      let juegos = ['Tragamonedas de 3 Slots', 'Tragamonedas de 5 Slots', 'Dados', 'Blackjack', 'Consultar saldo de jugador', 'Cargar saldo de jugador'], index = readlineSync.keyInSelect(juegos, 'Elija la opcion, juego, o cero para salir');
 
       console.log("------------------------------------------------------------------------------------")
 
@@ -61,9 +68,16 @@ export class Casino {
           }
           break;
 
-        case 'Tragamonedas2':
-          console.log("<Bienvenido al juego de Tragamonedas2 -variante del 1ero [void] ")
-          console.log("------------------------------------------------------------------------------------")
+        case 'Tragamonedas de 5 Slots':
+          if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
+            console.log("No posee saldo suficiente para jugar al Tragamonedas de 5 Slots, cargue saldo y vuelva a intentar!")
+            console.log("------------------------------------------------------------------------------------")
+            this.interaccionCasino();
+          } else {
+            console.log("<Bienvenido al juego de Tragamonedas de 5 Slots>")
+            console.log("------------------------------------------------------------------------------------")
+            this.jugarTragamonedas2(this.jugador);
+          }
           break;
 
         case 'Dados':
@@ -115,10 +129,11 @@ export class Casino {
 // Definir clase jugador 
 
 let maquina1 = new Tragamonedas(3, 100);
+let maquina2 = new Tragamonedas(5, 300);
 let blackjack1 = new Blackjack(100)
 let dados1 = new Dados(100)
 let jugador1: Jugador = new Jugador('Pepe', 0);
 
-let CasinoUshuaia = new Casino(maquina1, blackjack1, dados1,jugador1);
+let CasinoUshuaia = new Casino(maquina1, maquina2, blackjack1, dados1, jugador1);
 
 CasinoUshuaia.interaccionCasino();
