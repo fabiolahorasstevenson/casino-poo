@@ -19,16 +19,5 @@
       return this.saldoJugador
   }
 
-  // Repensar - si tiene sentido o reutilizamos el comprar fichas
-  public ganarSaldo( pSaldoJugador: number): void{
-      this.saldoJugador = this.saldoJugador+ pSaldoJugador;
-  }
-
-  public cobrarSaldo(pSaldoJugador:number): void{
-      // Ir al casino a cambiar las fichas
-      // Dinero ganado ? mostrar?
-      console.log("Usted ha ganado $ ");  
-  }
-
         
   }
