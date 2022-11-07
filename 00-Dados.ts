@@ -1,48 +1,21 @@
 import { Jugador } from './00-Jugador';
 
+//-------Interactuador de lineas de comando por terminal------
+let readlineSync = require('readline-sync');
+
 
 //-------Funcion Aleatorio para generar los numeros------
 function getRandomInt(min: number, max: number) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min);
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
-class Dados {
-    private cantDados: number;
-    private sumaDados: number;
-    private pozoDados: number;
+export class Dados {
     private apuestaMinimaDados: number;
 
-    constructor(pCantDados: number, pSumaDados: number, pPozoDados: number, pApuestaMinimaDados: number){
-        this.cantDados= pCantDados;
-        this.sumaDados= pSumaDados;
-        this.pozoDados= pPozoDados;
+    constructor(pApuestaMinimaDados: number) {
         this.apuestaMinimaDados = pApuestaMinimaDados;
-    }
-
-    public getCantDados(): number {
-        return this.cantDados;
-    }
-
-    public setCantDados(cantDados: number): void {
-        this.cantDados = cantDados;
-    }
-
-    public getSumaDados(): number {
-        return this.sumaDados;
-    }
-
-    public setSumaDados(sumaDados: number): void {
-        this.sumaDados = sumaDados;
-    }
-
-    public getPozoDados(): number {
-        return this.pozoDados;
-    }
-
-    public setPozoDados(pozoDados: number): void {
-        this.pozoDados = pozoDados;
     }
 
     public getApuestaMinimaDados(): number {
@@ -53,16 +26,103 @@ class Dados {
         this.apuestaMinimaDados = apuestaMinimaDados;
     }
 
-    public lanzarDados(): number{
-        let dado: number = getRandomInt(1,6);
-        return dado; 
+    public lanzarDados(): number {
+        let dado: number = getRandomInt(1, 7); //antes era (1,6): no toma el segundo valor = 6, sino 5. Se sube a 7
+        return dado;
     }
 
-    public jugarDados(){
-        let dado1: number= 0;
-        let dado2: number =0;
-        let suma: number= 0;
+    public jugarDados(pJugador: Jugador) {
+        let dado1: number = 0;
+        let dado2: number = 0;
+        let suma: number = 0;
+        let continuar: boolean = true;
+        let contadorVueltas: number = 1;
 
+        while (pJugador.getSaldoJugador() >= this.apuestaMinimaDados && continuar === true) {
 
+            if (contadorVueltas === 1) {
+                console.log("------------------------------------------------------------------------------------")
+                console.log("> Bienvenido al Juedo de Dados!! 7 y 11 gana. 2,3 y 12 pierde");
+                console.log("-------------------------Vuelta Jugador numero " + contadorVueltas + "---------------------------------------")
+              } else {
+                console.log("-------------------------Vuelta Jugador numero " + contadorVueltas + "--------------------------------------")
+              }
+            console.log("En esta ronda su saldo de jugador es: " + pJugador.getSaldoJugador())
+
+            dado1 = this.lanzarDados();
+            dado2 = this.lanzarDados();
+            suma = dado1 + dado2;
+
+            switch (suma) {
+                case 7:// Jugador gana
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador gana!");
+                    pJugador.modificarSaldoJugador(100)
+                    break;
+
+                case 11:// Jugador gana
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador gana!");
+                    pJugador.modificarSaldoJugador(100)
+                    break;
+
+                case 2:// Jugador pierde
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador pierde");
+                    pJugador.modificarSaldoJugador(-100)
+                    break;
+
+                case 3:// Jugador pierde
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador pierde");
+                    pJugador.modificarSaldoJugador(-100)
+                    break;
+
+                case 12:// Jugador pierde
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador pierde");
+                    pJugador.modificarSaldoJugador(-100)
+                    break;
+
+                case 4:// Jugador siegue sin descuento
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = -->${dado1 + dado2}`)
+                    console.log("Jugador sigue tirando. No se descuenta nada");
+                    break;
+
+                case 5:// Jugador siegue sin descuento
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador sigue tirando. No se descuenta nada");
+                    break;
+
+                case 6:// Jugador siegue sin descuento
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador sigue tirando. No se descuenta nada");
+                    break;
+
+                case 9:// Jugador siegue sin descuento
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador sigue tirando. No se descuenta nada");
+
+                    break;
+
+                case 10:// Jugador siegue sin descuento
+                    console.log(`>Dado1: ${dado1}, Dado2: ${dado2} = --> ${dado1 + dado2}`)
+                    console.log("Jugador sigue tirando. No se descuenta nada");
+                    break;
+
+                default:
+                    break;
+            }
+            console.log("En esta ronda el saldo de jugador queda asi: " + pJugador.getSaldoJugador())
+            console.log("------------------------------------------------------------------------------------")
+
+            if (readlineSync.keyInYN('Desea continuar jugando a los Dados?')) {
+                continuar = true;
+            } else {
+                console.log(`Saliendo del juego de Dados`);
+                continuar = false;
+            }
+            contadorVueltas++;
+        }
     }
 }

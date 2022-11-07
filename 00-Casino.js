@@ -4,12 +4,14 @@ exports.Casino = void 0;
 var _00_Tragamonedas_1 = require("./00-Tragamonedas");
 var _00_Jugador_1 = require("./00-Jugador");
 var _00_Blackjack_1 = require("./00-Blackjack");
+var _00_Dados_1 = require("./00-Dados");
 //-------Interactuador de lineas de comando por terminal------
 var readlineSync = require('readline-sync');
 var Casino = /** @class */ (function () {
-    function Casino(paramTragamonedas1, paramBlackjack, pJugador) {
+    function Casino(paramTragamonedas1, paramBlackjack, paramDados, pJugador) {
         this.tragamonedas1 = paramTragamonedas1;
         this.blackjack = paramBlackjack;
+        this.dados = paramDados;
         this.jugador = pJugador;
     }
     Casino.prototype.jugarTragamonedas1 = function (pJugador) {
@@ -18,6 +20,10 @@ var Casino = /** @class */ (function () {
     };
     Casino.prototype.jugarBlackjack = function (pJugador) {
         this.blackjack.jugarBlackjack(pJugador);
+        //this.interaccionCasino(); le agregue esta linea para no salir del casino
+    };
+    Casino.prototype.jugarDados = function (pJugador) {
+        this.dados.jugarDados(pJugador);
         //this.interaccionCasino(); le agregue esta linea para no salir del casino
     };
     Casino.prototype.interaccionCasino = function () {
@@ -43,8 +49,14 @@ var Casino = /** @class */ (function () {
                     console.log("------------------------------------------------------------------------------------");
                     break;
                 case 'Dados':
-                    console.log("<Bienvenido al juego de Dados [void] ");
-                    console.log("------------------------------------------------------------------------------------");
+                    if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
+                        console.log("No posee saldo suficiente para jugar a los Dados, cargue saldo y vuelva a intentar!");
+                        console.log("------------------------------------------------------------------------------------");
+                        this.interaccionCasino();
+                    }
+                    else {
+                        this.jugarDados(this.jugador);
+                    }
                     break;
                 case 'Blackjack':
                     if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
@@ -83,7 +95,8 @@ exports.Casino = Casino;
 // Dejamos acá por ahora
 // Definir clase jugador 
 var maquina1 = new _00_Tragamonedas_1.Tragamonedas(3, 100);
-var blackjack1 = new _00_Blackjack_1.Blackjack(300);
+var blackjack1 = new _00_Blackjack_1.Blackjack(100);
+var dados1 = new _00_Dados_1.Dados(100);
 var jugador1 = new _00_Jugador_1.Jugador('Pepe', 0);
-var CasinoUshuaia = new Casino(maquina1, blackjack1, jugador1);
+var CasinoUshuaia = new Casino(maquina1, blackjack1, dados1, jugador1);
 CasinoUshuaia.interaccionCasino();

@@ -209,6 +209,7 @@ var Blackjack = /** @class */ (function () {
                     console.log(" EMPATE !!! El Jugador GANA !!!");
                     pJugador.modificarSaldoJugador(100);
                     console.log("--> Al finalizar esta ronda su saldo de jugador ha quedado asi: " + pJugador.getSaldoJugador());
+                    continuarCasino = false;
                 }
                 contadorVueltas++;
             }

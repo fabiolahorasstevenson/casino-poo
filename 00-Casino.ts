@@ -1,6 +1,7 @@
 import { Tragamonedas } from "./00-Tragamonedas";
 import { Jugador } from './00-Jugador';
 import { Blackjack } from "./00-Blackjack";
+import { Dados } from "./00-Dados";
 
 
 //-------Interactuador de lineas de comando por terminal------
@@ -9,12 +10,14 @@ let readlineSync = require('readline-sync');
 export class Casino {
   protected tragamonedas1: Tragamonedas;
   protected blackjack: Blackjack;
+  protected dados: Dados;
   protected jugador: Jugador;
 
 
-  constructor(paramTragamonedas1: Tragamonedas, paramBlackjack: Blackjack, pJugador: Jugador) {
+  constructor(paramTragamonedas1: Tragamonedas, paramBlackjack: Blackjack, paramDados:Dados, pJugador: Jugador) {
     this.tragamonedas1 = paramTragamonedas1;
     this.blackjack = paramBlackjack;
+    this.dados = paramDados;
     this.jugador = pJugador;
   }
 
@@ -25,6 +28,11 @@ export class Casino {
 
   public jugarBlackjack(pJugador: Jugador) {
     this.blackjack.jugarBlackjack(pJugador);
+    //this.interaccionCasino(); le agregue esta linea para no salir del casino
+  }
+
+  public jugarDados(pJugador: Jugador) {
+    this.dados.jugarDados(pJugador);
     //this.interaccionCasino(); le agregue esta linea para no salir del casino
   }
 
@@ -59,8 +67,13 @@ export class Casino {
           break;
 
         case 'Dados':
-          console.log("<Bienvenido al juego de Dados [void] ")
-          console.log("------------------------------------------------------------------------------------")
+          if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
+            console.log("No posee saldo suficiente para jugar a los Dados, cargue saldo y vuelva a intentar!")
+            console.log("------------------------------------------------------------------------------------")
+            this.interaccionCasino();
+          } else {
+            this.jugarDados(this.jugador);
+          }
           break;
 
         case 'Blackjack':
@@ -102,9 +115,10 @@ export class Casino {
 // Definir clase jugador 
 
 let maquina1 = new Tragamonedas(3, 100);
-let blackjack1 = new Blackjack(300)
+let blackjack1 = new Blackjack(100)
+let dados1 = new Dados(100)
 let jugador1: Jugador = new Jugador('Pepe', 0);
 
-let CasinoUshuaia = new Casino(maquina1, blackjack1, jugador1);
+let CasinoUshuaia = new Casino(maquina1, blackjack1, dados1,jugador1);
 
 CasinoUshuaia.interaccionCasino();
