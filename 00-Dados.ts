@@ -62,7 +62,7 @@ class Dados {
         let dado1: number= 0;
         let dado2: number =0;
         let suma: number= 0;
-
-
+        console.log("Hola estamos probando");
     }
+
 }
