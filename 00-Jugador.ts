@@ -16,7 +16,7 @@
   }
 
   public getSaldoJugador(): number {
-      return this.saldoJugador
+      return this.saldoJugador;
   }
 
         

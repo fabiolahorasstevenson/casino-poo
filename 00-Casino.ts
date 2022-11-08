@@ -2,14 +2,15 @@ import { Tragamonedas } from "./00-Tragamonedas";
 import { Jugador } from './00-Jugador';
 import { Blackjack } from "./00-Blackjack";
 import { Dados } from "./00-Dados";
-
+import { Tragamoneda3Slots } from './00-Tragamonedas3Slots';
+import { Tragamoneda5Slots } from './00-Tragamonedas5Slots';
 
 //-------Interactuador de lineas de comando por terminal------
 let readlineSync = require('readline-sync');
 
 export class Casino {
-  protected tragamonedas1: Tragamonedas;
-  protected tragamonedas2: Tragamonedas;
+  protected tragamonedas1: Tragamoneda3Slots;
+  protected tragamonedas2: Tragamoneda5Slots;
   protected blackjack: Blackjack;
   protected dados: Dados;
   protected jugador: Jugador;
@@ -128,8 +129,8 @@ export class Casino {
 // Dejamos acá por ahora
 // Definir clase jugador 
 
-let maquina1 = new Tragamonedas(3, 100);
-let maquina2 = new Tragamonedas(5, 300);
+let maquina1 = new Tragamoneda3Slots(3, 100);
+let maquina2 = new Tragamoneda5Slots(5, 300);
 let blackjack1 = new Blackjack(100)
 let dados1 = new Dados(100)
 let jugador1: Jugador = new Jugador('Pepe', 0);

@@ -1,10 +1,11 @@
 "use strict";
 exports.__esModule = true;
 exports.Casino = void 0;
-var _00_Tragamonedas_1 = require("./00-Tragamonedas");
 var _00_Jugador_1 = require("./00-Jugador");
 var _00_Blackjack_1 = require("./00-Blackjack");
 var _00_Dados_1 = require("./00-Dados");
+var _00_Tragamonedas3Slots_1 = require("./00-Tragamonedas3Slots");
+var _00_Tragamonedas5Slots_1 = require("./00-Tragamonedas5Slots");
 //-------Interactuador de lineas de comando por terminal------
 var readlineSync = require('readline-sync');
 var Casino = /** @class */ (function () {
@@ -107,8 +108,8 @@ var Casino = /** @class */ (function () {
 exports.Casino = Casino;
 // Dejamos acá por ahora
 // Definir clase jugador 
-var maquina1 = new _00_Tragamonedas_1.Tragamonedas(3, 100);
-var maquina2 = new _00_Tragamonedas_1.Tragamonedas(5, 300);
+var maquina1 = new _00_Tragamonedas3Slots_1.Tragamoneda3Slots(3, 100);
+var maquina2 = new _00_Tragamonedas5Slots_1.Tragamoneda5Slots(5, 300);
 var blackjack1 = new _00_Blackjack_1.Blackjack(100);
 var dados1 = new _00_Dados_1.Dados(100);
 var jugador1 = new _00_Jugador_1.Jugador('Pepe', 0);
