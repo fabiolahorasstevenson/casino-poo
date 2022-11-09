@@ -27,7 +27,7 @@ function getRandomInt(min: number, max: number) {
 export class Dados {
   private apuestaMinimaDados: number;
 
-  constructor(pApuestaMinimaDados: number) {
+ public constructor(pApuestaMinimaDados: number) {
       this.apuestaMinimaDados = pApuestaMinimaDados;
   }
 

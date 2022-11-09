@@ -29,7 +29,7 @@ function getRandomInt(min: number, max: number) {
 export class Tragamoneda5Slots extends Tragamonedas{
 
   
-  constructor(pCantSlots: number, pApuestaMinima: number){
+ public constructor(pCantSlots: number, pApuestaMinima: number){
     super(pCantSlots,pApuestaMinima);
     
 }

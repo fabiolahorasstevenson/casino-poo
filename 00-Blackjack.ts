@@ -28,7 +28,7 @@ function getRandomInt(min: number, max: number) {
 export class Blackjack {
   protected apuestaMinima: number;
 
-  constructor(paramApuestaMinima: number) {
+  public constructor(paramApuestaMinima: number) {
     this.apuestaMinima = paramApuestaMinima;
   }
 

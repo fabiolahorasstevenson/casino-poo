@@ -16,7 +16,7 @@ export class Casino {
   protected jugador: Jugador;
 
 
-  constructor(paramTragamonedas1: Tragamonedas, paramTragamonedas2: Tragamonedas, paramBlackjack: Blackjack, paramDados: Dados, pJugador: Jugador) {
+  public constructor(paramTragamonedas1: Tragamonedas, paramTragamonedas2: Tragamonedas, paramBlackjack: Blackjack, paramDados: Dados, pJugador: Jugador) {
     this.tragamonedas1 = paramTragamonedas1;
     this.tragamonedas2 = paramTragamonedas2;
     this.blackjack = paramBlackjack;
