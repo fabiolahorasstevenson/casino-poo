@@ -2,17 +2,17 @@
   protected jugador: string;
   protected saldoJugador: number;
 
-  public constructor(pJugador: string, pSaldoJugador: number){
+  public constructor(pJugador: string, pSaldoJugador: number) {
       this.jugador = pJugador;
       this.saldoJugador = pSaldoJugador;
   }
 
   public comprarSaldo(pSaldoJugador: number) {
-      this.saldoJugador = this.saldoJugador+ pSaldoJugador;
+      this.saldoJugador = this.saldoJugador + pSaldoJugador;
   }
 
   public modificarSaldoJugador(pSaldoJugador: number) {
-      this.saldoJugador = this.saldoJugador+ pSaldoJugador;
+      this.saldoJugador = this.saldoJugador + pSaldoJugador;
   }
 
   public getSaldoJugador(): number {

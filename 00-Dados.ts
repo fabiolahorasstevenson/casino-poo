@@ -135,7 +135,7 @@ export class Dados {
               console.log(`Saliendo del juego de Dados`);
               continuar = false;
           }
-          contadorVueltas++;
+          contadorVueltas ++;
       }
   }
 }
