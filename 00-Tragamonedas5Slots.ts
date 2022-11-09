@@ -49,7 +49,7 @@ export class Tragamoneda5Slots extends Tragamonedas{
     
             for (let i: number = 0; i < slotsMaquina.length; i++) { //Recorro el array de slots e igualo cada elemento al valor ganador.
               slotsMaquina[i] = numeroGanador;
-              console.log("numero del slot " + i + " es igual a " + slotsMaquina[i]);
+              console.log("Slot " + i + " es igual a " + slotsMaquina[i]);
             }
             console.log("Usted ha ganado!!!!")
             pJugador.modificarSaldoJugador(100);
@@ -59,7 +59,7 @@ export class Tragamoneda5Slots extends Tragamonedas{
     
             for (let i: number = 0; i < slotsMaquina.length; i++) {
               slotsMaquina[i] = getRandomInt(1, 10);
-              console.log("numero del slot " + i + " es igual a " + slotsMaquina[i]);
+              console.log("Slot " + i + " es igual a " + slotsMaquina[i]);
     
             }
             console.log("Usted ha perdido")
@@ -70,13 +70,13 @@ export class Tragamoneda5Slots extends Tragamonedas{
           }
     
     
-          if (readlineSync.keyInYN('Desea continuar viciando y perdiendo su vida?')) {
+          if (readlineSync.keyInYN('¿Desea continuar viciando y perdiendo su vida?')) {
             // 'Y' key was pressed.
             continuar = true;
             // Do something...
           } else {
             // Another key was pressed.
-            console.log(`Saliendo del tragamonedas de ${this.cantidadSlots} Slots`);
+            console.log('Saliendo del tragamonedas de ${this.cantidadSlots} Slots');
             // Do something...
             continuar = false;
           }
