@@ -1,0 +1,25 @@
+{
+  "name": "casino-poo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "00-Casino.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabiolahorasstevenson/casino-poo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabiolahorasstevenson/casino-poo/issues"
+  },
+  "homepage": "https://github.com/fabiolahorasstevenson/casino-poo#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9"
+  }
+}
