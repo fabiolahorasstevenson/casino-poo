@@ -91,9 +91,14 @@ var Casino = /** @class */ (function () {
                     console.log("<Se han agregado " + cargarSaldo + " al saldo del jugador!");
                     console.log("<El saldo actual es de " + this.jugador.getSaldoJugador());
                     break;
+                case 'CANCEL':
+                    console.log("Gracias vuelva pronto!!");
+                    console.log("------------------------------------------------------------------------------------");
+                    salidaCasino = true;
+                    break;
                 default:
                     index = 0;
-                    console.log("gracias vuelvas prontos ");
+                    console.log("Gracias vuelva pronto!!");
                     console.log("------------------------------------------------------------------------------------");
                     salidaCasino = true;
                     break;

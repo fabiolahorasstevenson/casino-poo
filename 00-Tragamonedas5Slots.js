@@ -49,7 +49,7 @@ var Tragamoneda5Slots = /** @class */ (function (_super) {
                 var numeroGanador = getRandomInt(1, 10); //Creo una variable para guardar el numero que se repetira en los slots.
                 for (var i = 0; i < slotsMaquina.length; i++) { //Recorro el array de slots e igualo cada elemento al valor ganador.
                     slotsMaquina[i] = numeroGanador;
-                    console.log("numero del slot " + i + " es igual a " + slotsMaquina[i]);
+                    console.log("Slot " + i + " es igual a " + slotsMaquina[i]);
                 }
                 console.log("Usted ha ganado!!!!");
                 pJugador.modificarSaldoJugador(100);
@@ -59,21 +59,21 @@ var Tragamoneda5Slots = /** @class */ (function (_super) {
             else { //En caso de que no sea 10 el valor aleatorio, los numeros tenderan a ser distintos segun la funcion Random.
                 for (var i = 0; i < slotsMaquina.length; i++) {
                     slotsMaquina[i] = getRandomInt(1, 10);
-                    console.log("numero del slot " + i + " es igual a " + slotsMaquina[i]);
+                    console.log("Slot " + i + " es igual a " + slotsMaquina[i]);
                 }
                 console.log("Usted ha perdido");
                 pJugador.modificarSaldoJugador(-100);
                 console.log("Al finalizar esta ronda su saldo de jugador a quedado asi: " + pJugador.getSaldoJugador());
                 console.log("------------------------------------------------------------------------------------");
             }
-            if (readlineSync.keyInYN('Desea continuar viciando y perdiendo su vida?')) {
+            if (readlineSync.keyInYN('¿Desea continuar viciando y perdiendo su vida?')) {
                 // 'Y' key was pressed.
                 continuar = true;
                 // Do something...
             }
             else {
                 // Another key was pressed.
-                console.log("Saliendo del tragamonedas de ".concat(this.cantidadSlots, " Slots"));
+                console.log('Saliendo del tragamonedas de ${this.cantidadSlots} Slots');
                 // Do something...
                 continuar = false;
             }
