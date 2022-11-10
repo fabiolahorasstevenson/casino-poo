@@ -48,8 +48,6 @@ export class Casino {
 
     let salidaCasino: boolean = false;
 
-
-
     while (salidaCasino === false) {
 
       let juegos = ['Tragamonedas de 3 Slots', 'Tragamonedas de 5 Slots', 'Dados', 'Blackjack', 'Consultar saldo de jugador', 'Cargar saldo de jugador'], index = readlineSync.keyInSelect(juegos, 'Elija la opcion, juego, o cero para salir');
@@ -106,13 +104,13 @@ export class Casino {
           break;
 
         case 'Cargar saldo de jugador':
-          let cargarSaldo: number = readlineSync.questionInt("ingrese la cantidad para agregar al saldo: ");
+          let cargarSaldo: number = readlineSync.questionInt("Ingrese la cantidad para agregar al saldo: ");
           this.jugador.comprarSaldo(cargarSaldo);
           console.log("<Se han agregado " + cargarSaldo + " al saldo del jugador!");
           console.log("<El saldo actual es de " + this.jugador.getSaldoJugador());
           break;
 
-          case 'CANCEL':
+        case 'CANCEL':
           console.log("Gracias vuelva pronto!!");
           console.log("------------------------------------------------------------------------------------")
           salidaCasino = true;
@@ -124,9 +122,7 @@ export class Casino {
           salidaCasino = true;
           break;
       }
-      //if (index === 0) {
-      //  salidaCasino = true;
-      //  }
+      
     }
   }
 }
@@ -142,4 +138,6 @@ let jugador1: Jugador = new Jugador('Pepe', 0);
 
 let CasinoUshuaia = new Casino(maquina1, maquina2, blackjack1, dados1, jugador1);
 
+let nombreJugador = readlineSync.question('Ingrese su nombre: ');
+jugador1.setJugador(nombreJugador);
 CasinoUshuaia.interaccionCasino();
