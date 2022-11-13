@@ -5,8 +5,8 @@ var log_file = fs.createWriteStream('./logJuegos.txt', { flags: 'w' });
 var log_stdout = process.stdout;
 
 console.log = function (d) { //
-    log_file.write(util.format(d) + '\n');
-    log_stdout.write(util.format(d) + '\n');
+  log_file.write(util.format(d) + '\n');
+  log_stdout.write(util.format(d) + '\n');
 };
 
 //-----------------------------------
@@ -32,7 +32,6 @@ export class Blackjack {
     this.apuestaMinima = paramApuestaMinima;
   }
 
-
   public jugarBlackjack(pJugador: Jugador) {
     console.clear();
     console.log("------------------------------------------------------------------------------------")
@@ -42,7 +41,6 @@ export class Blackjack {
     let continuarBlackjack: boolean = true;
 
     while (pJugador.getSaldoJugador() >= this.apuestaMinima && continuarBlackjack === true) {
-
       let sumaJugador: number = 0;
       let continuarCasino: boolean = true;
       let continuarJugador: boolean = true;
@@ -147,7 +145,6 @@ export class Blackjack {
           } else {//Jugador se queda
             continuarJugador = false;
             continuarCasino = true;
-
           }
         }
         contadorVueltas++;
@@ -166,7 +163,6 @@ export class Blackjack {
         } else {
           console.log("--------------------------------------------------------------Vuelta Casino numero " + contadorVueltas)
         }
-
 
         switch (getRandomInt(1, 14)) {
           case 1:
@@ -254,6 +250,7 @@ export class Blackjack {
           pJugador.modificarSaldoJugador(-100)
           console.log("--> Al finalizar esta ronda su saldo de jugador ha quedado asi: " + pJugador.getSaldoJugador())
           continuarCasino = false;
+
         } else {
           continuarCasino = true;
         }
@@ -267,13 +264,13 @@ export class Blackjack {
 
         contadorVueltas++;
       }
+
       if (readlineSync.keyInYN('Presione Y para seguir jugando al Blackjack, o N para salir al menu principal del Casino')) {
         continuarBlackjack = true;
         console.clear();
       } else {
         continuarBlackjack = false;
       }
-
     }
   }
 }

@@ -33,16 +33,22 @@ var Casino = /** @class */ (function () {
         //this.interaccionCasino(); le agregue esta linea para no salir del casino
     };
     Casino.prototype.interaccionCasino = function () {
+        console.log("interaccion");
         var salidaCasino = false;
+        var volverIntentar = false;
         while (salidaCasino === false) {
+            console.log("while");
             var juegos = ['Tragamonedas de 3 Slots', 'Tragamonedas de 5 Slots', 'Dados', 'Blackjack', 'Consultar saldo de jugador', 'Cargar saldo de jugador'], index = readlineSync.keyInSelect(juegos, 'Elija la opcion, juego, o cero para salir');
+            volverIntentar = false;
             console.log("------------------------------------------------------------------------------------");
             switch (juegos[index]) {
                 case 'Tragamonedas de 3 Slots':
                     if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
                         console.log("No posee saldo suficiente para jugar al Tragamonedas de 3 Slots, cargue saldo y vuelva a intentar!");
+                        salidaCasino = true;
+                        volverIntentar = true;
                         console.log("------------------------------------------------------------------------------------");
-                        this.interaccionCasino();
+                        break;
                     }
                     else {
                         console.log("<Bienvenido al juego de Tragamonedas de 3 Slots>");
@@ -53,8 +59,10 @@ var Casino = /** @class */ (function () {
                 case 'Tragamonedas de 5 Slots':
                     if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
                         console.log("No posee saldo suficiente para jugar al Tragamonedas de 5 Slots, cargue saldo y vuelva a intentar!");
+                        salidaCasino = true;
+                        volverIntentar = true;
                         console.log("------------------------------------------------------------------------------------");
-                        this.interaccionCasino();
+                        break;
                     }
                     else {
                         console.log("<Bienvenido al juego de Tragamonedas de 5 Slots>");
@@ -65,8 +73,10 @@ var Casino = /** @class */ (function () {
                 case 'Dados':
                     if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
                         console.log("No posee saldo suficiente para jugar a los Dados, cargue saldo y vuelva a intentar!");
+                        salidaCasino = true;
+                        volverIntentar = true;
                         console.log("------------------------------------------------------------------------------------");
-                        this.interaccionCasino();
+                        break;
                     }
                     else {
                         this.jugarDados(this.jugador);
@@ -75,8 +85,10 @@ var Casino = /** @class */ (function () {
                 case 'Blackjack':
                     if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
                         console.log("No posee saldo suficiente para jugar al Blackjack, cargue saldo y vuelva a intentar!");
+                        salidaCasino = true;
+                        volverIntentar = true;
                         console.log("------------------------------------------------------------------------------------");
-                        this.interaccionCasino();
+                        break;
                     }
                     else {
                         this.jugarBlackjack(this.jugador);
@@ -86,26 +98,29 @@ var Casino = /** @class */ (function () {
                     console.log(this.jugador.getSaldoJugador());
                     break;
                 case 'Cargar saldo de jugador':
-                    var cargarSaldo = readlineSync.questionInt("ingrese la cantidad para agregar al saldo: ");
+                    var cargarSaldo = readlineSync.questionInt("Ingrese la cantidad para agregar al saldo: ");
                     this.jugador.comprarSaldo(cargarSaldo);
                     console.log("<Se han agregado " + cargarSaldo + " al saldo del jugador!");
                     console.log("<El saldo actual es de " + this.jugador.getSaldoJugador());
                     break;
                 case 'CANCEL':
+                    console.log("IRINA");
                     console.log("Gracias vuelva pronto!!");
                     console.log("------------------------------------------------------------------------------------");
                     salidaCasino = true;
                     break;
                 default:
                     index = 0;
+                    console.log("IRINA");
                     console.log("Gracias vuelva pronto!!");
                     console.log("------------------------------------------------------------------------------------");
                     salidaCasino = true;
                     break;
             }
-            //if (index === 0) {
-            //  salidaCasino = true;
-            //  }
+            if (volverIntentar) {
+                console.log("intentar");
+                this.interaccionCasino();
+            }
         }
     };
     return Casino;
@@ -119,4 +134,6 @@ var blackjack1 = new _00_Blackjack_1.Blackjack(100);
 var dados1 = new _00_Dados_1.Dados(100);
 var jugador1 = new _00_Jugador_1.Jugador('Pepe', 0);
 var CasinoUshuaia = new Casino(maquina1, maquina2, blackjack1, dados1, jugador1);
+var nombreJugador = readlineSync.question('Ingrese su nombre: ');
+jugador1.setJugador(nombreJugador);
 CasinoUshuaia.interaccionCasino();
