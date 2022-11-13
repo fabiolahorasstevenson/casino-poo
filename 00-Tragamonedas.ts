@@ -5,8 +5,8 @@ var log_file = fs.createWriteStream('./logJuegos.txt', { flags: 'w' });
 var log_stdout = process.stdout;
 
 console.log = function (d) { //
-    log_file.write(util.format(d) + '\n');
-    log_stdout.write(util.format(d) + '\n');
+  log_file.write(util.format(d) + '\n');
+  log_stdout.write(util.format(d) + '\n');
 };
 
 //-----------------------------------
@@ -40,11 +40,10 @@ export abstract class Tragamonedas {
     this.cantidadSlots = paramCantSlots;
     this.apuestaMinima = paramApuestaMinima;
     //this.saldoJugador = paramSaldoJugador; se borra porque esto se movio al Juagador
-
   }
 
   public setCantidadSlots(paramCantSlots: number) {
-    this.cantidadSlots = paramCantSlots
+    this.cantidadSlots = paramCantSlots;
   }
 
   public getCantidadSlots(): number {

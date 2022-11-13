@@ -15,7 +15,6 @@ export class Casino {
   protected dados: Dados;
   protected jugador: Jugador;
 
-
   public constructor(paramTragamonedas1: Tragamonedas, paramTragamonedas2: Tragamonedas, paramBlackjack: Blackjack, paramDados: Dados, pJugador: Jugador) {
     this.tragamonedas1 = paramTragamonedas1;
     this.tragamonedas2 = paramTragamonedas2;
@@ -47,19 +46,23 @@ export class Casino {
   public interaccionCasino() {
 
     let salidaCasino: boolean = false;
+    let volverIntentar: boolean = false;
 
     while (salidaCasino === false) {
+      let juegos = ['Tragamonedas de 3 Slots', 'Tragamonedas de 5 Slots', 'Dados', 'Blackjack', 'Consultar saldo de jugador', 'Cargar saldo de jugador'],
+        index = readlineSync.keyInSelect(juegos, 'Elija la opcion, juego, o cero para salir');
 
-      let juegos = ['Tragamonedas de 3 Slots', 'Tragamonedas de 5 Slots', 'Dados', 'Blackjack', 'Consultar saldo de jugador', 'Cargar saldo de jugador'], index = readlineSync.keyInSelect(juegos, 'Elija la opcion, juego, o cero para salir');
-
+      volverIntentar = false;
       console.log("------------------------------------------------------------------------------------")
 
       switch (juegos[index]) {
         case 'Tragamonedas de 3 Slots':
           if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
             console.log("No posee saldo suficiente para jugar al Tragamonedas de 3 Slots, cargue saldo y vuelva a intentar!")
+            salidaCasino = true;
+            volverIntentar = true;
             console.log("------------------------------------------------------------------------------------")
-            this.interaccionCasino();
+            break;
           } else {
             console.log("<Bienvenido al juego de Tragamonedas de 3 Slots>")
             console.log("------------------------------------------------------------------------------------")
@@ -70,8 +73,10 @@ export class Casino {
         case 'Tragamonedas de 5 Slots':
           if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
             console.log("No posee saldo suficiente para jugar al Tragamonedas de 5 Slots, cargue saldo y vuelva a intentar!")
+            salidaCasino = true;
+            volverIntentar = true;
             console.log("------------------------------------------------------------------------------------")
-            this.interaccionCasino();
+            break;
           } else {
             console.log("<Bienvenido al juego de Tragamonedas de 5 Slots>")
             console.log("------------------------------------------------------------------------------------")
@@ -82,8 +87,10 @@ export class Casino {
         case 'Dados':
           if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
             console.log("No posee saldo suficiente para jugar a los Dados, cargue saldo y vuelva a intentar!")
+            salidaCasino = true;
+            volverIntentar = true;
             console.log("------------------------------------------------------------------------------------")
-            this.interaccionCasino();
+            break;
           } else {
             this.jugarDados(this.jugador);
           }
@@ -92,8 +99,10 @@ export class Casino {
         case 'Blackjack':
           if (this.jugador.getSaldoJugador() < 100 || this.jugador.getSaldoJugador() === undefined || this.jugador.getSaldoJugador() === null) {
             console.log("No posee saldo suficiente para jugar al Blackjack, cargue saldo y vuelva a intentar!")
+            salidaCasino = true;
+            volverIntentar = true;
             console.log("------------------------------------------------------------------------------------")
-            this.interaccionCasino();
+            break;
           } else {
             this.jugarBlackjack(this.jugador);
           }
@@ -122,7 +131,10 @@ export class Casino {
           salidaCasino = true;
           break;
       }
-      
+
+      if (volverIntentar) {
+        this.interaccionCasino();
+      }
     }
   }
 }

@@ -6,6 +6,9 @@ var Jugador = /** @class */ (function () {
         this.jugador = pJugador;
         this.saldoJugador = pSaldoJugador;
     }
+    Jugador.prototype.setJugador = function (pJugador) {
+        this.jugador = pJugador;
+    };
     Jugador.prototype.comprarSaldo = function (pSaldoJugador) {
         this.saldoJugador = this.saldoJugador + pSaldoJugador;
     };
